@@ -27,8 +27,5 @@ public class TestController {
         return "你好?是'http://localhost:8080/puttest'哪里";
     }
 
-    @GetMapping("/member")
-    public String member() {
 
-    }
 }
