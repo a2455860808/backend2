@@ -1,47 +1,47 @@
 import org.junit.jupiter.api.*;
 
 public class JUnitTest {
-    @DisplayName("1+2是3")
+
+    @DisplayName("1+2=3")
     @Test
     public void junitTest(){
+
+
+
         int a = 1;
         int b = 2;
         int sum = 3;
 
-        Assertions.assertEquals(sum, a+b);
+        System.out.println("1+2=3");
+        Assertions.assertEquals(sum,a+b);
     }
-
-
-    @DisplayName("1+3是4")
+    @DisplayName("1+3=3")
     @Test
     public void junitFailTest(){
         int a = 1;
         int b = 3;
-        int sum = 4;
-        System.out.println("1+3是4");
-        Assertions.assertEquals(sum, a+b);
-    }
+        int sum = 3;
 
+        System.out.println("1+3=3");
+        Assertions.assertEquals(sum,a+b);
+    }
     @BeforeEach
     public void prepare(){
-        System.out.println("测试准备");
+        System.out.println("테스트 준비");
     }
 
     @AfterEach
     public void clean(){
-        System.out.println("测试结束");
+        System.out.println("테스트 후 설겆이");
     }
-
     @BeforeAll
-    public static void cleanAll(){
-        System.out.println("最初准备");
-    }
+    public  static void prepareAll(){
+        System.out.println("최초 준비");
 
+    }
     @AfterAll
-    public static void cleanAll2(){
-        System.out.println("最后结束");
+    public static void cleanAll(){
+        System.out.println("최종 마무리");
     }
 }
-
-
 
