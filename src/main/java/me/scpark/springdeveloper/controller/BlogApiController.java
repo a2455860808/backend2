@@ -27,14 +27,19 @@ public class BlogApiController {
     }
 
 
-    @GetMapping("/api/article")
+    @GetMapping("/api/articles")
     public ResponseEntity<List<ArticleResponse>> getAllArticles() {
-        List<Article> articleList = blogService.getAll();
-        List<ArticleResponse> articleResponseList = new ArrayList<>();
-        for (Article article : articleList) {
-            ArticleResponse ar = new ArticleResponse(article);
-            articleResponseList.add(ar);
-        }
+//        List<Article> articleList = blogService.getAll();
+//        List<ArticleResponse> articleResponseList = new ArrayList<>();
+//        for (Article article : articleList) {
+//            ArticleResponse ar = new ArticleResponse(article);
+//            articleResponseList.add(ar);
+//        }
+        List<ArticleResponse> articleResponseList = blogService.getAll()
+                .stream()
+//                .map(a->new ArticleResponse(a))
+                .map(ArticleResponse::new)
+                .toList();
         return ResponseEntity.ok().body(articleResponseList);
     }
 
