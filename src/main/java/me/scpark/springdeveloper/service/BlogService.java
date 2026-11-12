@@ -24,4 +24,13 @@ public class BlogService {
         blogRepository.findAll();
         return blogRepository.findAll();
     }
+    public Article getById(Long id){
+        return blogRepository.findById(id).get();
+    }
+    public void deleteArticle(Long id){
+        blogRepository.deleteById(id);
+    }
+
+
+
 }
