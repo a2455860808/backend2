@@ -4,12 +4,12 @@ import lombok.RequiredArgsConstructor;
 import me.scpark.springdeveloper.domain.Article;
 import me.scpark.springdeveloper.dto.AddArticleRequest;
 import me.scpark.springdeveloper.dto.ArticleResponse;
+import me.scpark.springdeveloper.dto.UpdateArticleRequest;
 import me.scpark.springdeveloper.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -57,8 +57,8 @@ public class BlogApiController {
         return ResponseEntity.ok().build();
     }
     @PutMapping("/api/articles/{id}")
-    public ResponseEntity<ArticleResponse> updateArticle(@PathVariable Long id, @RequestBody updateArticleRequest req) {
-        Article article = blogService.updateArticle(id, req);
+    public ResponseEntity<ArticleResponse> updateArticle(@PathVariable Long id, @RequestBody UpdateArticleRequest request) {
+        Article article = blogService.updateArticle(id, request);
         return ResponseEntity.ok().body(new ArticleResponse(article));
     }
 

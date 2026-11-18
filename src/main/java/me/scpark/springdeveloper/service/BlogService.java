@@ -3,9 +3,10 @@ package me.scpark.springdeveloper.service;
 import lombok.RequiredArgsConstructor;
 import me.scpark.springdeveloper.domain.Article;
 import me.scpark.springdeveloper.dto.AddArticleRequest;
+import me.scpark.springdeveloper.dto.UpdateArticleRequest;
 import me.scpark.springdeveloper.repository.BlogRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,7 +22,6 @@ public class BlogService {
     }
 
     public List<Article> getAll(){
-        blogRepository.findAll();
         return blogRepository.findAll();
     }
     public Article getById(Long id){
@@ -31,6 +31,11 @@ public class BlogService {
         blogRepository.deleteById(id);
     }
 
-
+    @Transactional
+    public Article updateArticle(Long id, UpdateArticleRequest request) {
+        Article article = getById(id);
+        article.update(request.title(), request.content());
+        return article;
+    }
 
 }
